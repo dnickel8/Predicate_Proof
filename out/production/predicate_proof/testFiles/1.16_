@@ -1,0 +1,17 @@
+\block_begin
+1 q -> r \formula_end premise \eol
+\block_begin
+2 p \vee q \formula_end ass \eol
+\block_begin
+3 p \formula_end ass \eol
+4 p \vee r \formula_end \vee i1 3 \eol
+\block_end
+\block_begin
+5 q \formula_end ass \eol
+6 r \formula_end -> e 1,5 \eol
+7 p \vee r \formula_end \vee i2 6 \eol
+\block_end
+8 p \vee r \formula_end \vee e 2,3-4,5-7 \eol
+\block_end
+9 p \vee q -> p \vee r \formula_end -> i 2-8 \eol
+\block_end

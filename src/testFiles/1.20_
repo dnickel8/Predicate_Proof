@@ -1,0 +1,24 @@
+\block_begin
+1 \neg p \vee q \formula_end premise \eol
+\block_begin
+2 \neg p \formula_end premise \eol
+\block_begin
+3 p \formula_end ass \eol
+4 \bot \formula_end \neg e 3,2 \eol
+5 q \formula_end \bot e 4 \eol
+\block_end
+6 p -> q \formula_end -> i 3-5 \eol
+\block_end
+
+\block_begin
+7 q \formula_end premise \eol
+\block_begin
+8 p \formula_end ass \eol
+9 \bot \formula_end \neg e 8,2 \eol
+10 q \formula_end \bot e 9 \eol
+\block_end
+11 p -> q \formula_end -> i 3-4 \eol
+\block_end
+
+12 p->q \formula_end \vee e 1,2-6,7-11 \eol
+\block_end

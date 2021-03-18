@@ -1,0 +1,18 @@
+\block_begin
+\block_begin
+1 q -> r \formula_end assumption \eol
+\block_begin
+2 \neg q -> \neg p \formula_end ass \eol
+\block_begin
+3 p \formula_end ass \eol
+4 \neg \neg p \formula_end \neg \neg i 3 \eol
+5 \neg \neg q \formula_end MT 2,4 \eol
+6 q \formula_end \neg \neg e 5 \eol
+7 r \formula_end -> e 1,6 \eol
+\block_end
+8 p -> r \formula_end -> i 3-7 \eol
+\block_end
+9 (\neg q -> \neg p ) -> (p -> r) \formula_end -> i 2-8 \eol
+\block_end
+10 (q -> r) -> ((\neg q -> \neg p) -> (p-> r)) \formula_end -> i 1-9 \eol
+\block_end

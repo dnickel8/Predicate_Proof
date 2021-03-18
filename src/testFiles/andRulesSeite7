@@ -1,0 +1,4 @@
+\block_begin 1 p \wedge q \formula_end premise \eol
+2 r \formula_end premise \eol
+3 q \formula_end \wedge e2 1 \eol
+4 q \wedge r \formula_end \wedge i 3,2 \eol \block_end

@@ -1,0 +1,5 @@
+\block_begin
+1 \neg p \wedge q \formula_end premise \eol
+2 \neg p \wedge q -> r \vee \neg p \formula_end premise \eol
+3 r \vee \neg p \formula_end -> e 2,1 \eol
+\block_end
