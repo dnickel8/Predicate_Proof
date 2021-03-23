@@ -1,0 +1,14 @@
+\block_begin
+1 \exists x P(x) \formula_end premise \eol
+2 \forall x (P(x) -> Q(x) ) \formula_end premise \eol
+\block_begin
+3 v \variable_end \eol
+\block_begin
+4 v \variable_end P(v) \formula_end ass \eol
+5 P(v) -> Q(v) \formula_end \forall x e 2 \eol
+6 Q(v) \formula_end -> e 5,4 \eol
+\block_end
+7 Q(v) \formula_end \exists x e 1,4-6 \eol
+\block_end
+8 \forall y Q(y) \formula_end \forall y i 3-7 \eol
+\block_end

@@ -1,0 +1,14 @@
+\block_begin
+1 \forall x (Q(x) -> R(x)) \formula_end premise \eol
+2 \exists x (P(x) \wedge Q(x) ) \formula_end premise \eol
+\block_begin
+3 y \variable_end P(y) \wedge Q(y) \formula_end ass \eol
+4 Q(y) -> R(y) \formula_end ass \eol
+5 Q(y) \formula_end \wedge e2 3 \eol
+6 R(y) \formula_end -> e 4,5 \eol
+7 P(y) \formula_end \wedge e1 3 \eol
+8 P(y) \wedge R(y) \formula_end \wedge i 7,6 \eol
+9 \exists x (P(x) \wedge R(x) ) \formula_end \exists x i 8 \eol
+\block_end
+10 \exists x (P(x) \wedge R(x)) \formula_end \exists x e 2,3-9 \eol
+\block_end
