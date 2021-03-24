@@ -1,0 +1,12 @@
+- Zeilen nummerieren
+- rule für jede Ersetzungsregel
+- nodes für jede Ersetzungsregel
+- visitor
+
+
+
+Fragen:
+- Muss nur der oberste Knoten überprüft werden oder sollen auch tiefere gesucht werden --> evtl.
+- Wie sollen die x0 für die Quantoren-Regeln in der Grammatik aussehen?
+- Range, nicht nur Block für die REgeln
+- Seite 21 "copy 2"
