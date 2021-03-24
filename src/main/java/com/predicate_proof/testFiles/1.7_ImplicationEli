@@ -1,0 +1,7 @@
+\block_begin
+1 p -> (q -> r) \formula_end premise \eol
+2 p \formula_end premise \eol
+3 \neg r \formula_end premise \eol
+4 q -> r \formula_end -> e 1,2 \eol
+5 \neg q \formula_end MT 4,3 \eol
+\block_end

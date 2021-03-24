@@ -1,0 +1,22 @@
+\block_begin
+1 (p \vee q) \vee r \formula_end premise \eol
+\block_begin
+2 (p \vee q) \formula_end ass \eol
+\block_begin
+3 p \formula_end ass \eol
+4 p \vee (q \vee r) \formula_end \vee i1 3 \eol
+\block_end
+\block_begin
+5 q \formula_end ass \eol
+6 q \vee r \formula_end \vee i1 5 \eol
+7 p \vee  (q \vee r) \formula_end \vee i2 6 \eol
+\block_end
+8 p \vee (q \vee r) \formula_end \vee e 2 , 3-4 , 5-7 \eol
+\block_end
+\block_begin
+9 r \formula_end ass \eol
+10 q \vee r \formula_end \vee i2 9 \eol
+11 p \vee (q \vee r) \formula_end \vee i2 10 \eol
+\block_end
+12 p \vee (q \vee r) \formula_end \vee e 1,2-8,9-11 \eol
+\block_end
