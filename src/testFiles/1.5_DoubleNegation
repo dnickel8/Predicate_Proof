@@ -1,8 +1,0 @@
-\block_begin
-1 p \formula_end premise \eol
-2 \neg \neg ( q \wedge r ) \formula_end premise \eol
-3 \neg \neg p \formula_end \neg \neg i 1 \eol
-4 q \wedge r \formula_end \neg \neg e 2 \eol
-5 r \formula_end \wedge e2 4 \eol
-6 \neg \neg p \wedge r \formula_end \wedge i 3 , 5 \eol
-\block_end

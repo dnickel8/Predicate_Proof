@@ -1,9 +1,0 @@
-\block_begin
-1 \neg q -> \neg p \formula_end premise \eol
-\block_begin
-2 p \formula_end assumption \eol
-3 \neg \neg p \formula_end \neg \neg i 2 \eol
-4 \neg \neg q \formula_end MT 1,3 \eol
-\block_end
-5 p -> \neg \neg q \formula_end -> i 2-4 \eol
-\block_end
