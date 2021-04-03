@@ -21,7 +21,6 @@ public class AndEliRule extends Rule {
                          Node beforeFormula, //ehemals FormulaNode
                          Node afterFormula) {
 
-        while (true) {
             if (beforeFormula instanceof FormulaNode) {
                 FormulaNode beforeFormula2 = (FormulaNode) beforeFormula;
                 if (beforeFormula2.getOperator() == RelationOperator.AND) {
@@ -40,7 +39,7 @@ public class AndEliRule extends Rule {
             } else if (beforeFormula instanceof UnaryOperatorNode && afterFormula instanceof UnaryOperatorNode) {
                 return check(ruleNumber, ((UnaryOperatorNode) beforeFormula).getExpression(), ((UnaryOperatorNode) afterFormula).getExpression());
             }
-        }
+            return false;
 
         //FormulaNode node = beforeFormula.searchOperator(RelationOperator.AND);
        /* if (beforeFormula.getOperator() != RelationOperator.AND) {
