@@ -2,10 +2,27 @@ package com.predicate_proof.nodes;
 
 import com.predicate_proof.copied.RelationOperator;
 
+/**
+ * @author David Nickel
+ */
 public class UnaryOperatorNode extends Node{
     private RelationOperator operator;
     private String variable;
     private Node expression;
+
+    public UnaryOperatorNode(RelationOperator operator, String variable, Node expression) {
+        this.operator = operator;
+        this.variable = variable;
+        this.expression = expression;
+    }
+
+    public UnaryOperatorNode(RelationOperator operator) {
+        this.operator = operator;
+    }
+
+    public UnaryOperatorNode() {
+
+    }
 
     public RelationOperator getOperator() {
         return operator;

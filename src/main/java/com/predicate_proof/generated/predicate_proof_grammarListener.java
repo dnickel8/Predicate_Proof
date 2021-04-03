@@ -328,6 +328,26 @@ public interface predicate_proof_grammarListener extends ParseTreeListener {
 	 */
 	void exitExistsquantorElimination(predicate_proof_grammarParser.ExistsquantorEliminationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#copyRule}.
+	 * @param ctx the parse tree
+	 */
+	void enterCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link predicate_proof_grammarParser#copyRule}.
+	 * @param ctx the parse tree
+	 */
+	void exitCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#alreadyProofed}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link predicate_proof_grammarParser#alreadyProofed}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree
 	 */

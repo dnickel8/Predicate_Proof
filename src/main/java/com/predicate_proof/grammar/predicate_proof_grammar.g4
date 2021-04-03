@@ -90,6 +90,8 @@ description
     | allquantorElimination
     | existsquantorIntroduction
     | existsquantorElimination
+    | copyRule
+    | alreadyProofed
 ;
 
 andIntroduction
@@ -116,6 +118,7 @@ orIntroduction2
 :
     OR 'i2' singleScope
 ;
+
 orElimination
 :
     OR 'e' singleScope COMMA multiScope COMMA multiScope
@@ -190,6 +193,16 @@ existsquantorIntroduction
 existsquantorElimination
 :
     EXISTQUANTOR variable 'e' singleScope COMMA multiScope
+;
+
+copyRule
+:
+    'copy' lineNumber
+;
+
+alreadyProofed
+:
+    'already proofed' lineNumber
 ;
 
 variable

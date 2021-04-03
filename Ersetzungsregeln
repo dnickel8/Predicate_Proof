@@ -1,12 +1,22 @@
-- Zeilen nummerieren
-- rule für jede Ersetzungsregel
-- nodes für jede Ersetzungsregel
-- visitor
-
-
-
 Fragen:
-- Muss nur der oberste Knoten überprüft werden oder sollen auch tiefere gesucht werden --> evtl.
-- Wie sollen die x0 für die Quantoren-Regeln in der Grammatik aussehen?
+- Muss nur der oberste Knoten überprüft werden oder sollen auch tiefere gesucht werden --> sollte
 - Range, nicht nur Block für die REgeln
-- Seite 21 "copy 2"
+- Seite 21 "copy linenumber"
+- p -> q <-> \neg p \vee q  --> already proofed
+- already proofed --> als Erweiterung
+- = introduction und elimination --> reinnehmen
+- in der Box deklarierte Variable darf die Box nicht verlassen.
+
+- Seite116_2 darf nicht funktionieren
+
+
+Weiteres Vorgehen?
+- Fehlerhafte testen
+- junit Tests
+- Kommentare
+
+Vortrag
+- Thema:
+- Was wurde, warum, wie gemacht
+- Probleme und deren Lösung
+- 30 min

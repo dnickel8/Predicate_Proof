@@ -203,6 +203,18 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExistsquantorElimination(predicate_proof_grammarParser.ExistsquantorEliminationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#copyRule}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#alreadyProofed}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

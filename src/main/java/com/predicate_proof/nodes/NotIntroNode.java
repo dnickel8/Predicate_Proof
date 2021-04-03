@@ -1,9 +1,16 @@
 package com.predicate_proof.nodes;
 
+/**
+ * notIntroduction
+ * :
+ *     NOT 'i' multiScope
+ * ;
+ * @author David Nickel
+ */
 public class NotIntroNode extends RuleNode {
 
-    private int multiScopeFirstLine;
-    private int mulitScopeLastLine;
+    private final int multiScopeFirstLine;
+    private final int mulitScopeLastLine;
 
     public NotIntroNode(int multiScopeFirstLine, int mulitScopeLastLine) {
         this.multiScopeFirstLine = multiScopeFirstLine;

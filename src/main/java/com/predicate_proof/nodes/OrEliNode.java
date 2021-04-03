@@ -1,12 +1,19 @@
 package com.predicate_proof.nodes;
 
+/**
+ * orElimination
+ * :
+ *     OR 'e' singleScope COMMA multiScope COMMA multiScope
+ * ;
+ * @author David Nickel
+ */
 public class OrEliNode extends RuleNode {
 
-    private int singleScope;
-    private int multiScopeFirstLine1;
-    private int multiScopeLastLine1;
-    private int multiScopeFirstLine2;
-    private int multiScopeLastLine2;
+    private final int singleScope;
+    private final int multiScopeFirstLine1;
+    private final int multiScopeLastLine1;
+    private final int multiScopeFirstLine2;
+    private final int multiScopeLastLine2;
 
     public OrEliNode(int singleScope,
                      int multiScopeFirstLine1,

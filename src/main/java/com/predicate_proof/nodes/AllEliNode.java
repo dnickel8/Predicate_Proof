@@ -1,9 +1,16 @@
 package com.predicate_proof.nodes;
 
+/**
+ * allquantorElimination
+ * :
+ *     ALLQUANTOR variable 'e' singleScope
+ * ;
+ * @author David Nickel
+ */
 public class AllEliNode extends RuleNode {
 
-    private String variable;
-    private int singleScope;
+    private final String variable;
+    private final int singleScope;
 
     public AllEliNode(String variable, int singleScope) {
         this.variable = variable;

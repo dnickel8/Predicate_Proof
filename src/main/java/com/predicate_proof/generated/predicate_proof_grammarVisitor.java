@@ -1,6 +1,5 @@
 // Generated from C:/Users/admin/Documents/Studium/Master/Forschungsprojekt/predicate_proof/src/main/java/com/predicate_proof/grammar\predicate_proof_grammar.g4 by ANTLR 4.9.1
 package com.predicate_proof.generated;
-
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -203,6 +202,18 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExistsquantorElimination(predicate_proof_grammarParser.ExistsquantorEliminationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#copyRule}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#alreadyProofed}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree

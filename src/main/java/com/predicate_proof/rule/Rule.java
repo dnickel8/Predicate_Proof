@@ -3,14 +3,27 @@ package com.predicate_proof.rule;
 import com.predicate_proof.copied.RelationOperator;
 import com.predicate_proof.nodes.*;
 
+/**
+ * Declares methods needed to check the proof rules
+ * @author David Nickel
+ * @version 1.0 26/03/2021
+ */
 public abstract class Rule {
 
     private String toReplace;
 
+    /**
+     * Checks whether the nodes are equal.
+     * @param node1
+     * @param node2
+     * @return boolean
+     */
     protected boolean equals(Node node1, Node node2) {
         if (node1 instanceof VariableNode && node2 instanceof VariableNode) {
             return ((VariableNode) node1).getVariable().equals(((VariableNode) node2).getVariable());
-        } else if (node1 instanceof UnaryOperatorNode && node2 instanceof UnaryOperatorNode) {
+        }
+
+        else if (node1 instanceof UnaryOperatorNode && node2 instanceof UnaryOperatorNode) {
             if (! (((UnaryOperatorNode) node1).getOperator().equals(((UnaryOperatorNode) node2).getOperator()))) {
                 return false;
             }else if (((UnaryOperatorNode) node1).getOperator() != RelationOperator.NOT
@@ -19,7 +32,9 @@ public abstract class Rule {
             } else {
                 return equals(((UnaryOperatorNode) node1).getExpression(), ((UnaryOperatorNode) node2).getExpression());
             }
-        } else if (node1 instanceof FormulaNode && node2 instanceof FormulaNode) {
+        }
+
+        else if (node1 instanceof FormulaNode && node2 instanceof FormulaNode) {
             if (!(((FormulaNode) node1).getOperator().equals(((FormulaNode) node2).getOperator()))) {
                 return false;
             } else if (!(equals(((FormulaNode) node1).getLeftExpression(), ((FormulaNode) node2).getLeftExpression()))){
@@ -27,7 +42,12 @@ public abstract class Rule {
             } else {
                 return equals(((FormulaNode) node1).getRightExpression(), ((FormulaNode) node2).getRightExpression());
             }
-        } else if (node1 instanceof PredicateNode && node2 instanceof PredicateNode) {
+        }
+
+        else if (node1 instanceof PredicateNode && node2 instanceof PredicateNode) {
+            if (!(((PredicateNode) node1).getPredicateName().equals(((PredicateNode) node2).getPredicateName()))) {
+                return false;
+            }
             if (((PredicateNode) node1).getParameter().size() != ((PredicateNode) node2).getParameter().size()) {
                 return false;
             }
@@ -37,15 +57,30 @@ public abstract class Rule {
                 }
             }
             return true;
-        } else {
+        }
+
+        else {
             return false;
         }
     }
 
+    /**
+     * Checks whether the three nodes are equal
+     * @param node1
+     * @param node2
+     * @param node3
+     * @return boolean
+     */
     protected boolean equals(Node node1, Node node2, Node node3) {
         return (equals(node1, node2) && equals(node2, node3) && equals(node1, node3));
     }
 
+    /**
+     * Checks whether the two nodes are negated to each other.
+     * @param node1
+     * @param node2
+     * @return boolean
+     */
     protected boolean negativeEquals(Node node1, Node node2) {
         if (node1 instanceof UnaryOperatorNode
                 && ((UnaryOperatorNode) node1).getOperator() == RelationOperator.NOT) {
@@ -64,11 +99,28 @@ public abstract class Rule {
         }
     }
 
+    /**
+     * Checks whether the two nodes are equal
+     * except one variable from beforeReplacing is replaced with variable in afterReplacing
+     * @param variable
+     * @param beforeReplacing
+     * @param afterReplacing
+     * @return
+     */
     protected boolean replacingVariableEquals (String variable, Node beforeReplacing, Node afterReplacing) {
         toReplace = null;
         return replacingVariableEquals2(variable, beforeReplacing, afterReplacing);
     }
 
+    /**
+     * Checks whether the two nodes are equal
+     * except beforeVariable from beforeReplacing is replaced with afterVariable in afterReplacing
+     * @param beforeVariable
+     * @param afterVariable
+     * @param beforeReplacing
+     * @param afterReplacing
+     * @return
+     */
     protected boolean replacingVariableEquals (String beforeVariable, String afterVariable, Node beforeReplacing, Node afterReplacing) {
         toReplace = beforeVariable;
         return replacingVariableEquals2(afterVariable, beforeReplacing, afterReplacing);
@@ -86,9 +138,10 @@ public abstract class Rule {
                 }
             }
             return ((VariableNode) beforeReplacing).getVariable().equals(((VariableNode) afterReplacing).getVariable());
+        }
 
-        } else if (beforeReplacing instanceof UnaryOperatorNode && afterReplacing instanceof UnaryOperatorNode) {
-            if (! (((UnaryOperatorNode) beforeReplacing).getOperator().equals(((UnaryOperatorNode) afterReplacing).getOperator()))) {
+        else if (beforeReplacing instanceof UnaryOperatorNode && afterReplacing instanceof UnaryOperatorNode) {
+            if (!(((UnaryOperatorNode) beforeReplacing).getOperator().equals(((UnaryOperatorNode) afterReplacing).getOperator()))) {
                 return false;
             } else if (((UnaryOperatorNode) beforeReplacing).getOperator() != RelationOperator.NOT
                     && !(((UnaryOperatorNode) beforeReplacing).getVariable().equals(((UnaryOperatorNode) afterReplacing).getVariable()))) {
@@ -96,7 +149,9 @@ public abstract class Rule {
             } else {
                 return replacingVariableEquals2(variable, ((UnaryOperatorNode) beforeReplacing).getExpression(), ((UnaryOperatorNode) afterReplacing).getExpression());
             }
-        } else if (beforeReplacing instanceof FormulaNode && afterReplacing instanceof FormulaNode) {
+        }
+
+        else if (beforeReplacing instanceof FormulaNode && afterReplacing instanceof FormulaNode) {
             if (!(((FormulaNode) beforeReplacing).getOperator().equals(((FormulaNode) afterReplacing).getOperator()))) {
                 return false;
             } else if (!(replacingVariableEquals2(variable,((FormulaNode) beforeReplacing).getLeftExpression(),(((FormulaNode) afterReplacing).getLeftExpression())))){
@@ -104,7 +159,12 @@ public abstract class Rule {
             } else {
                 return replacingVariableEquals2(variable,((FormulaNode) beforeReplacing).getRightExpression(), ((FormulaNode) afterReplacing).getRightExpression());
             }
-        } else if (beforeReplacing instanceof PredicateNode && afterReplacing instanceof PredicateNode) {
+        }
+
+        else if (beforeReplacing instanceof PredicateNode && afterReplacing instanceof PredicateNode) {
+            if (!(((PredicateNode) beforeReplacing).getPredicateName().equals(((PredicateNode) afterReplacing).getPredicateName()))) {
+                return false;
+            }
             if (((PredicateNode) beforeReplacing).getParameter().size() != ((PredicateNode) afterReplacing).getParameter().size()) {
                 return false;
             }
@@ -115,10 +175,19 @@ public abstract class Rule {
             }
             return true;
         }
-        return false;
+
+        else {
+            return false;
+        }
     }
 
-    public boolean variableNotInFormula(String declaredVariable, Node formula) {
+    /**
+     * checks whether the variable not is in the formula
+     * @param declaredVariable
+     * @param formula
+     * @return
+     */
+    protected boolean variableNotInFormula(String declaredVariable, Node formula) {
         if (formula instanceof VariableNode) {
             return !declaredVariable.equals(((VariableNode) formula).getVariable());
         } else if (formula instanceof FormulaNode) {

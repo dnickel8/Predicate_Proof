@@ -1,9 +1,16 @@
 package com.predicate_proof.nodes;
 
+/**
+ * notElimination
+ * :
+ *     NOT 'e' singleScope COMMA singleScope
+ * ;
+ * @author David Nickel
+ */
 public class NotEliNode extends RuleNode {
 
-    private int singleScope1;
-    private int singleScope2;
+    private final int singleScope1;
+    private final int singleScope2;
 
     public NotEliNode(int singleScope1, int singleScope2) {
         this.singleScope1 = singleScope1;

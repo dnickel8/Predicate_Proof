@@ -6,8 +6,17 @@ import com.predicate_proof.generated.predicate_proof_grammarParser.*;
 import com.predicate_proof.nodes.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+/**
+ * @author David Nickel
+ * @version 1.0 24/03/2021
+ */
 public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<Node> {
 
+    /**
+     * choose the right method for visit.
+     * @param ctx
+     * @return
+     */
     @Override public Node visitDescription(predicate_proof_grammarParser.DescriptionContext ctx) {
         ParseTree rule = ctx.getChild(0);
         if (ctx.PREMISE() != null){
@@ -54,9 +63,14 @@ public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<
             return visitExistsquantorIntroduction((ExistsquantorIntroductionContext) rule);
         } else if (rule instanceof ExistsquantorEliminationContext) {
             return visitExistsquantorElimination((ExistsquantorEliminationContext) rule);
+        } else if (rule instanceof CopyRuleContext) {
+            return visitCopyRule((CopyRuleContext) rule);
+        } else if (rule instanceof AlreadyProofedContext) {
+            return visitAlreadyProofed((AlreadyProofedContext) rule);
+        } else {
+            throw new IllegalStateException("RuleNodeBaseVisitorImpl.visitDescription konnte nicht richtig ausgeführt werden. Bei: "
+                    + ctx.getText());
         }
-        System.out.println("Irgendetwas läuft falsch: visitDescription.");
-        return visitChildren(ctx);
     }
 
     @Override public Node visitAndIntroduction(AndIntroductionContext ctx) {
@@ -166,7 +180,7 @@ public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<
 
     @Override public Node visitExcludedMiddle(ExcludedMiddleContext ctx) {
         int singleScope;
-        if (ctx.getChildCount() == 2) {
+        if (ctx.getChildCount() == 2) { //in this rule a scope isn´t needed. If there is no, the singleScope is declared -1
             singleScope = Integer.parseInt(ctx.singleScope().getText());
         } else {
             singleScope = -1;
@@ -208,5 +222,15 @@ public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<
                 multiScopeFirstLine,
                 multiScopeLastLine);
         return node;
+    }
+
+    @Override public Node visitCopyRule(CopyRuleContext ctx) {
+        int linenumber = Integer.parseInt(ctx.lineNumber().getText());
+        return new CopyNode(linenumber);
+    }
+
+    @Override public Node visitAlreadyProofed(AlreadyProofedContext ctx) {
+        int linenumber = Integer.parseInt(ctx.lineNumber().getText());
+        return new AlreadyProofedNode(linenumber);
     }
 }

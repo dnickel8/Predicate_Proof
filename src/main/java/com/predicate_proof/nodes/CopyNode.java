@@ -1,18 +1,18 @@
 package com.predicate_proof.nodes;
 
+
 /**
- * bottomElimination
+ * copyRule
  * :
- *     BOTTOM 'e' singleScope
+ *     'copy' lineNumber
  * ;
- *
  * @author David Nickel
  */
-public class BottomEliNode extends RuleNode {
+public class CopyNode extends RuleNode {
 
     private final int singleScope;
 
-    public BottomEliNode(int singleScope) {
+    public CopyNode(int singleScope) {
         this.singleScope = singleScope;
     }
 

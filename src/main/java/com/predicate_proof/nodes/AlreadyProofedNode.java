@@ -1,18 +1,17 @@
 package com.predicate_proof.nodes;
 
 /**
- * bottomElimination
+ * alreadyProofed
  * :
- *     BOTTOM 'e' singleScope
+ *     'already proofed' lineNumber
  * ;
- *
  * @author David Nickel
  */
-public class BottomEliNode extends RuleNode {
+public class AlreadyProofedNode extends RuleNode{
 
     private final int singleScope;
 
-    public BottomEliNode(int singleScope) {
+    public AlreadyProofedNode(int singleScope) {
         this.singleScope = singleScope;
     }
 

@@ -400,6 +400,30 @@ public class predicate_proof_grammarBaseListener implements predicate_proof_gram
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCopyRule(predicate_proof_grammarParser.CopyRuleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable(predicate_proof_grammarParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}

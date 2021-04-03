@@ -1,10 +1,17 @@
 package com.predicate_proof.nodes;
 
+/**
+ * existsquantorElimination
+ * :
+ *     EXISTQUANTOR variable 'e' singleScope COMMA multiScope
+ * ;
+ * @author David Nickel
+ */
 public class ExistEliNode extends RuleNode {
-    private String variable;
-    private int singleScope;
-    private int multiScopeFirstLine;
-    private int multiScopeLastLine;
+    private final String variable;
+    private final int singleScope;
+    private final int multiScopeFirstLine;
+    private final int multiScopeLastLine;
 
     public ExistEliNode(String variable, int singleScope, int multiScopeFirstLine, int multiScopeLastLine) {
         this.variable = variable;

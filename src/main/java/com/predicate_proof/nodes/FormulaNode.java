@@ -2,10 +2,22 @@ package com.predicate_proof.nodes;
 
 import com.predicate_proof.copied.RelationOperator;
 
+/**
+ * @author David Nickel
+ */
 public class FormulaNode extends Node{
     private Node leftExpression;
     private RelationOperator operator;
     private Node rightExpression;
+
+    public FormulaNode(RelationOperator operator, Node leftExpression, Node rightExpression) {
+        this.operator = operator;
+        this.leftExpression = leftExpression;
+        this.rightExpression = rightExpression;
+    }
+
+    public FormulaNode() {
+    }
 
     public Node getLeftExpression() {
         return leftExpression;

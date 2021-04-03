@@ -3,6 +3,10 @@ package com.predicate_proof;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author David Nickel
+ * @version 1.0 24/03/2021
+ */
 @SpringBootApplication
 public class PredicateProofApplication {
 

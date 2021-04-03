@@ -1,23 +1,22 @@
 package com.predicate_proof.nodes;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author David Nickel
+ */
 public class PredicateNode extends Node{
 
-    private String predicateName;
+    private final String predicateName;
     private List<VariableNode> parameter;
 
-    public PredicateNode(String name, String predicateName) {
-        super(name);
+    public PredicateNode(String predicateName) {
         this.predicateName = predicateName;
     }
 
     public String getPredicateName() {
         return predicateName;
-    }
-
-    public void setPredicateName(String predicateName) {
-        this.predicateName = predicateName;
     }
 
     public List<VariableNode> getParameter() {
@@ -26,6 +25,13 @@ public class PredicateNode extends Node{
 
     public void setParameter(List<VariableNode> parameter) {
         this.parameter = parameter;
+    }
+
+    public void addParameter(VariableNode parameter) {
+        if (this.parameter == null) {
+            this.parameter = new ArrayList<>();
+        }
+        this.parameter.add(parameter);
     }
 
     public VariableNode getParameterByIndex(Integer index) {

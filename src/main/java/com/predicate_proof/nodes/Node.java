@@ -3,22 +3,18 @@ package com.predicate_proof.nodes;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author David Nickel
+ */
 public abstract class Node {
 
     private List<Node> children = new ArrayList<>();
-    private String name;
 
-    public Node(List<Node> children, String name) {
+    public Node(List<Node> children) {
         this.children = children;
-        this.name = name;
     }
 
     public Node() {
-
-    }
-
-    public Node(String name) {
-        this.name = name;
     }
 
 
@@ -32,10 +28,6 @@ public abstract class Node {
 
     public void setChildren(List<Node> children) {
         this.children = children;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Node getChild(int number) {

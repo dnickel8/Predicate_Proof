@@ -6,12 +6,28 @@ import com.predicate_proof.nodes.FormulaNode;
 import com.predicate_proof.nodes.LineNode;
 import com.predicate_proof.nodes.Node;
 
+/**
+ *  \ll
+ *      1 p \vee q \mid premise \\
+ *      \ll
+ *          2 p \mid assumption \\
+ *          3 q \vee p \mid \vee i2 2 \\
+ *      \gg
+ *      \ll
+ *          4 q \mid assumption \\
+ *          5 q \vee p \mid \vee i1 4 \\
+ *      \gg
+ *      6 q \vee p \mid \vee e 1,2-3,4-5 \\
+ *  \gg
+ * @author David Nickel
+ * @version 1.0 26/03/2021
+ */
 public class OrEliRule extends Rule {
 
-    public boolean test(FormulaNode beforeFormula,
-                        BlockNode beforeBlock1,
-                        BlockNode beforeBlock2,
-                        Node afterFormula) {
+    public boolean check(FormulaNode beforeFormula,
+                         BlockNode beforeBlock1,
+                         BlockNode beforeBlock2,
+                         Node afterFormula) {
 
         if (beforeFormula.getOperator() != RelationOperator.OR) {
             return false;
@@ -23,6 +39,8 @@ public class OrEliRule extends Rule {
         Node block2LastFormula = ((LineNode) beforeBlock2.getChild(beforeBlock2.getChildCount()-1)).getFormula();
 
         if (equals(block1LastFormula,block2LastFormula, afterFormula)) {
+            //there are two possibilities for the order in the or-statement,
+            // both will be checked.
             if (equals(block1firstFormula, beforeFormula.getLeftExpression())
                     && equals(block2firstFormula, beforeFormula.getRightExpression())) {
                 return true;

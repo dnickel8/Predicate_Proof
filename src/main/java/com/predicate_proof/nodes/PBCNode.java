@@ -1,9 +1,17 @@
 package com.predicate_proof.nodes;
 
+/**
+ * pbc
+ * :
+ *     'PBC' multiScope
+ * ;
+ *
+ * @author David Nickel
+ */
 public class PBCNode extends RuleNode {
 
-    private int multiScopeFirstLine;
-    private int multiScopeLastLine;
+    private final int multiScopeFirstLine;
+    private final int multiScopeLastLine;
 
     public PBCNode(int multiScopeFirstLine, int multiScopeLastLine) {
         this.multiScopeFirstLine = multiScopeFirstLine;

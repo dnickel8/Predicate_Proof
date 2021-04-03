@@ -6,39 +6,48 @@ import com.predicate_proof.rule.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author David Nickel
+ * @version 1.0 24/03/2021
+ */
 public class CheckProof {
-
 
     private List<BlockNode> blockNodes;
     private List<LineNode> lineNodes;
-    public boolean checkProof (BlockNode tree) {
-        blockNodes = new ArrayList<>();
-        lineNodes = new ArrayList<>();
 
+    public boolean checkProof (BlockNode tree) {
+        blockNodes = new ArrayList<>(); //list of all blocks already checked
+        lineNodes = new ArrayList<>(); //list of all lines already checked
         return checkBlock(tree);
     }
 
     private boolean checkBlock(BlockNode node) {
         List<Node> children = node.getChildren();
+        boolean isCorrect = true;
         for(Node child : children) {
             if (child instanceof LineNode) {
                 if (!(checkLine((LineNode) child))){
                     //throw new IllegalStateException("Line " + ((LineNode) child).getLinenumber() + " is wrong!");
-                    return false;
+                    isCorrect = false;
                 }
             } else if (child instanceof BlockNode) {
                 if (!checkBlock((BlockNode) child)) {
-                    return false;
+                    isCorrect = false;
                 }
             }
         }
         blockNodes.add(node);
-        return true;
+        if (!isCorrect) {
+            System.out.println("Block " + node.getFirstLine() + " - "
+                    + node.getLastLine() + " ist nicht korrekt.");
+        }
+        return isCorrect;
     }
 
     private boolean checkLine(LineNode node) {
         lineNodes.add(node);
         RuleNode ruleNode = (RuleNode) node.getRule();
+        //chooses the right method according to the proof rule
         if (ruleNode instanceof AllEliNode) {
             return allEliNodeMethod(node, (AllEliNode) ruleNode);
         } else if (ruleNode instanceof AllIntroNode) {
@@ -75,13 +84,21 @@ public class CheckProof {
             return orIntroNodeMethod(node, (OrIntroNode) ruleNode);
         } else if (ruleNode instanceof PBCNode) {
             return pbcNodeMethod(node, (PBCNode) ruleNode);
+        } else if (ruleNode instanceof CopyNode) {
+            return copyNodeMethod(node, (CopyNode) ruleNode);
+        } else if (ruleNode instanceof AlreadyProofedNode) {
+            return alreadyProofedNode(node, (AlreadyProofedNode) ruleNode);
         } else if (ruleNode == null) {
             return true;
         } else {
-            System.out.println("Unbekannte RuleNode: checkLine");
+            System.out.println("Unbekannte RuleNode in checkLine");
             return false;
         }
     }
+
+    /************************************
+     *  methods to prepare the checks   *
+     ************************************/
 
     private boolean allEliNodeMethod(LineNode node, AllEliNode ruleNode) {
         LineNode beforeNode;
@@ -89,17 +106,19 @@ public class CheckProof {
             return false;
         }
         AllEliRule rule = new AllEliRule();
-        return rule.test((UnaryOperatorNode) beforeNode.getFormula(), node.getFormula());
+        return rule.check((UnaryOperatorNode) beforeNode.getFormula(), node.getFormula());
     }
 
     private boolean allIntroNodeMethod(LineNode node, AllIntroNode ruleNode) {
         BlockNode beforeBlock;
-        if ((beforeBlock = searchBlockNode(ruleNode.getMultiScopeFirstLine(), ruleNode.getMultiScopeLastLine())) == null) {
+        if ((beforeBlock = searchBlockNode(ruleNode.getMultiScopeFirstLine(),
+                ruleNode.getMultiScopeLastLine())) == null) {
             return false;
         }
         if (node.getFormula() instanceof UnaryOperatorNode) {
             AllIntroRule rule = new AllIntroRule();
-            return rule.test(beforeBlock, (UnaryOperatorNode) node.getFormula());
+            return rule.check(beforeBlock,
+                    (UnaryOperatorNode) node.getFormula());
         } else {
             return false;
         }
@@ -107,10 +126,11 @@ public class CheckProof {
 
     private boolean andEliNodeMethod(LineNode node, AndEliNode ruleNode) {
         LineNode beforeNode;
-        if ((beforeNode = searchLineNode(ruleNode.getSingleScope())) == null)
+        if ((beforeNode = searchLineNode(ruleNode.getSingleScope())) == null) {
             return false;
+        }
         AndEliRule rule = new AndEliRule();
-        return rule.test(ruleNode.isRuleEinsTrueZweiFalse(),
+        return rule.check(ruleNode.isRuleEinsTrueZweiFalse(),
                 (FormulaNode) beforeNode.getFormula(),
                 node.getFormula());
     }
@@ -126,7 +146,7 @@ public class CheckProof {
         }
 
         AndIntroRule rule = new AndIntroRule();
-        return rule.test(beforeLine1.getFormula(), beforeLine2.getFormula(), (FormulaNode) node.getFormula());
+        return rule.check(beforeLine1.getFormula(), beforeLine2.getFormula(), (FormulaNode) node.getFormula());
     }
 
     private boolean bottomEliNodeMethod(LineNode node, BottomEliNode ruleNode) {
@@ -135,7 +155,7 @@ public class CheckProof {
             return false;
         }
         BottomEliRule rule = new BottomEliRule();
-        return rule.test(beforeLine.getFormula(), node.getFormula());
+        return rule.check(beforeLine.getFormula(), node.getFormula());
     }
 
     private boolean doubleNotEliNodeMethod(LineNode node, DoubleNotEliNode ruleNode) {
@@ -145,7 +165,7 @@ public class CheckProof {
         }
         DoubleNotEliRule rule = new DoubleNotEliRule();
         if (beforeLine.getFormula() instanceof UnaryOperatorNode) {
-            return rule.test((UnaryOperatorNode) beforeLine.getFormula(),node.getFormula());
+            return rule.check((UnaryOperatorNode) beforeLine.getFormula(),node.getFormula());
         }
         return false;
     }
@@ -157,7 +177,7 @@ public class CheckProof {
         }
         DoubleNotIntroRule rule =new DoubleNotIntroRule();
         if (node.getFormula() instanceof UnaryOperatorNode) {
-            return rule.test((beforeLine.getFormula()), (UnaryOperatorNode) node.getFormula());
+            return rule.check((beforeLine.getFormula()), (UnaryOperatorNode) node.getFormula());
         }
         return false;
     }
@@ -173,7 +193,7 @@ public class CheckProof {
         }
         ExistEliRule rule = new ExistEliRule();
         if (beforeLine.getFormula() instanceof UnaryOperatorNode) {
-            return rule.test((UnaryOperatorNode) beforeLine.getFormula(), beforeBlock, node.getFormula());
+            return rule.check((UnaryOperatorNode) beforeLine.getFormula(), beforeBlock, node.getFormula());
         }
         return false;
     }
@@ -185,7 +205,7 @@ public class CheckProof {
         }
         ExistIntroRule rule = new ExistIntroRule();
         if (node.getFormula() instanceof UnaryOperatorNode) {
-            return rule.test(beforeLine.getFormula(), (UnaryOperatorNode) node.getFormula());
+            return rule.check(beforeLine.getFormula(), (UnaryOperatorNode) node.getFormula());
         }
         return false;
     }
@@ -201,7 +221,7 @@ public class CheckProof {
         }
 
         ImpliesEliRule rule = new ImpliesEliRule();
-        return rule.test(beforeLine1.getFormula(),beforeLine2.getFormula(),node.getFormula());
+        return rule.check(beforeLine1.getFormula(),beforeLine2.getFormula(),node.getFormula());
     }
 
     private boolean impliesIntroNodeMethod(LineNode node, ImpliesIntroNode ruleNode) {
@@ -211,7 +231,7 @@ public class CheckProof {
         }
         ImpliesIntroRule rule = new ImpliesIntroRule();
         if (node.getFormula() instanceof FormulaNode) {
-            return rule.test(beforeBlock, (FormulaNode) node.getFormula());
+            return rule.check(beforeBlock, (FormulaNode) node.getFormula());
         }
         return false;
     }
@@ -220,14 +240,15 @@ public class CheckProof {
         LEMRule rule = new LEMRule();
         LineNode beforeLine;
         if (node.getFormula() instanceof FormulaNode) {
-            if (ruleNode.getSingleScope() >= 0) {
+            if (ruleNode.getSingleScope() >= 0) { //rule-alternativ with Scope
                 if ((beforeLine = searchLineNode(ruleNode.getSingleScope())) == null) {
                     return false;
                 } else {
-                    return rule.test(beforeLine.getFormula(),(FormulaNode) node.getFormula());
+                    return rule.check(beforeLine.getFormula(),
+                            (FormulaNode) node.getFormula());
                 }
-            } else {
-                return rule.test((FormulaNode) node.getFormula());
+            } else { //rule-alternativ without Scope
+                return rule.check((FormulaNode) node.getFormula());
             }
         } else {
             return false;
@@ -244,7 +265,7 @@ public class CheckProof {
             return false;
         }
         MTRule rule = new MTRule();
-        return rule.test(beforeLine1.getFormula(), beforeLine2.getFormula(), node.getFormula());
+        return rule.check(beforeLine1.getFormula(), beforeLine2.getFormula(), node.getFormula());
     }
 
     private boolean notEliNodeMethod(LineNode node, NotEliNode ruleNode) {
@@ -256,9 +277,8 @@ public class CheckProof {
         if ((beforeLine2 = searchLineNode(ruleNode.getSingleScope2())) == null) {
             return false;
         }
-
         NotEliRule rule = new NotEliRule();
-        return rule.test(beforeLine1.getFormula(), beforeLine2.getFormula(), node.getFormula());
+        return rule.check(beforeLine1.getFormula(), beforeLine2.getFormula(), node.getFormula());
     }
 
     private boolean notIntroNodeMethod(LineNode node, NotIntroNode ruleNode) {
@@ -267,9 +287,8 @@ public class CheckProof {
             return false;
         }
         NotIntroRule rule = new NotIntroRule();
-
         if(node.getFormula() instanceof UnaryOperatorNode) {
-            return rule.test(beforeBlock, (UnaryOperatorNode) node.getFormula());
+            return rule.check(beforeBlock, (UnaryOperatorNode) node.getFormula());
         }
         return false;
     }
@@ -287,10 +306,9 @@ public class CheckProof {
         if ((beforeBlock2 = searchBlockNode(ruleNode.getMultiScopeFirstLine2(), ruleNode.getMultiScopeLastLine2())) == null) {
             return false;
         }
-
         OrEliRule rule = new OrEliRule();
         if (beforeLine.getFormula() instanceof FormulaNode) {
-            return rule.test((FormulaNode) beforeLine.getFormula(), beforeBlock1, beforeBlock2, node.getFormula());
+            return rule.check((FormulaNode) beforeLine.getFormula(), beforeBlock1, beforeBlock2, node.getFormula());
         }
         return false;
     }
@@ -302,7 +320,7 @@ public class CheckProof {
         }
         OrIntroRule rule = new OrIntroRule();
         if (node.getFormula() instanceof FormulaNode) {
-            return rule.test(ruleNode.isRuleEinsTrueZweiFalse(),
+            return rule.check(ruleNode.isRuleEinsTrueZweiFalse(),
                     beforeLine.getFormula(),
                     (FormulaNode) node.getFormula());
         }
@@ -314,10 +332,31 @@ public class CheckProof {
         if ((beforeBlock = searchBlockNode(ruleNode.getMultiScopeFirstLine(), ruleNode.getMultiScopeLastLine())) == null) {
             return false;
         }
-
         PBCRule rule = new PBCRule();
-        return rule.test(beforeBlock, node.getFormula());
+        return rule.check(beforeBlock, node.getFormula());
     }
+
+    private boolean copyNodeMethod(LineNode node, CopyNode ruleNode) {
+        LineNode beforeLine;
+        if ((beforeLine = searchLineNode(ruleNode.getSingleScope())) == null) {
+            return false;
+        }
+        CopyRule rule = new CopyRule();
+        return rule.check(beforeLine.getFormula(), node.getFormula());
+    }
+
+    private boolean alreadyProofedNode(LineNode node, AlreadyProofedNode ruleNode) {
+        LineNode beforeLine;
+        if ((beforeLine = searchLineNode(ruleNode.getSingleScope())) == null) {
+            return false;
+        }
+        AlreadyProofedRule rule = new AlreadyProofedRule();
+        return rule.check(beforeLine.getFormula(), node.getFormula());
+    }
+
+    /********************
+     *  search methods  *
+     ********************/
 
     private LineNode searchLineNode(int lineNumber) {
         for (LineNode node : lineNodes) {
@@ -325,6 +364,8 @@ public class CheckProof {
                 return node;
             }
         }
+        System.out.println("Konnte die angegebene Zeile " + lineNumber
+                + " nicht finden.");
         return null;
     }
 
@@ -335,6 +376,8 @@ public class CheckProof {
                 return node;
             }
         }
+        System.out.println("Konnte den angegebenen Block " + firstLine
+                + " - " + lastLine + " nicht finden.");
         return null;
     }
 }

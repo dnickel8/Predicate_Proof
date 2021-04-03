@@ -1,28 +1,22 @@
 package com.predicate_proof.nodes;
 
-import java.util.List;
-
+/**
+ * Line consists of a formula, a rule and sometimes a declared variable
+ * @author David Nickel
+ */
 public class LineNode extends Node{
 
-    private int linenumber;
+    private final int linenumber;
     private Node rule;
     private Node formula;
     private boolean withVariableSymbol = false;
     private String variableSymbol;
 
-
-    public LineNode(List<Node> child, String name) {
-        super(child, name);
-    }
-
-    public LineNode(String name, int linenumber) {
-        super(name);
+    public LineNode(int linenumber) {
         this.linenumber = linenumber;
-
     }
 
-    public LineNode(String name, int linenumber, boolean withVariableSymbol, String variableSymbol) {
-        super(name);
+    public LineNode(int linenumber, boolean withVariableSymbol, String variableSymbol) {
         this.linenumber = linenumber;
         this.withVariableSymbol = withVariableSymbol;
         this.variableSymbol = variableSymbol;
@@ -30,10 +24,6 @@ public class LineNode extends Node{
 
     public int getLinenumber() {
         return linenumber;
-    }
-
-    public void setLinenumber(int linenumber) {
-        this.linenumber = linenumber;
     }
 
     public Node getRule() {
@@ -60,15 +50,8 @@ public class LineNode extends Node{
         return withVariableSymbol;
     }
 
-    public void setWithVariableSymbol(boolean withVariableSymbol) {
-        this.withVariableSymbol = withVariableSymbol;
-    }
-
     public String getVariableSymbol() {
         return variableSymbol;
     }
 
-    public void setVariableSymbol(String variableSymbol) {
-        this.variableSymbol = variableSymbol;
-    }
 }

@@ -1,10 +1,12 @@
 package com.predicate_proof.nodes;
 
+/**
+ * @author David Nickel
+ */
 public class VariableNode extends Node{
-    private String variable;
+    private final String variable;
 
-    public VariableNode(String name, String variable) {
-        super(name);
+    public VariableNode(String variable) {
         this.variable = variable;
     }
 

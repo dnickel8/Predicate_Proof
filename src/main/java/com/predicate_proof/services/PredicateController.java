@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author David Nickel
+ * @version 1.0 24/03/2021
+ */
 @RestController
-public class Controller {
+public class PredicateController {
 
     private final PredicateService predicateService;
 
-    public Controller(PredicateService predicateService) {
+    public PredicateController(PredicateService predicateService) {
         this.predicateService = predicateService;
     }
 

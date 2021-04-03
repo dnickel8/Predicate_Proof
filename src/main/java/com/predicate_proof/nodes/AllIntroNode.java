@@ -1,10 +1,17 @@
 package com.predicate_proof.nodes;
 
+/**
+ * allquantorIntroduction
+ * :
+ *     ALLQUANTOR variable 'i' multiScope
+ * ;
+ * @author David Nickel
+ */
 public class AllIntroNode extends RuleNode {
 
-    private String variable;
-    private int multiScopeFirstLine;
-    private int multiScopeLastLine;
+    private final String variable;
+    private final int multiScopeFirstLine;
+    private final int multiScopeLastLine;
 
     public AllIntroNode(String variable, int multiScopeFirstLine, int multiScopeLastLine) {
         this.variable = variable;
