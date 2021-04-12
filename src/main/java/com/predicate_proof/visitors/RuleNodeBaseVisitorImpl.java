@@ -67,6 +67,10 @@ public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<
             return visitCopyRule((CopyRuleContext) rule);
         } else if (rule instanceof AlreadyProofedContext) {
             return visitAlreadyProofed((AlreadyProofedContext) rule);
+        } else if (rule instanceof EqualsIntroductionContext) {
+            return visitEqualsIntroduction((EqualsIntroductionContext) rule);
+        } else if (rule instanceof EqualsEliminationContext) {
+            return visitEqualsElimination((EqualsEliminationContext) rule);
         } else {
             throw new IllegalStateException("RuleNodeBaseVisitorImpl.visitDescription konnte nicht richtig ausgeführt werden. Bei: "
                     + ctx.getText());
@@ -232,5 +236,13 @@ public class RuleNodeBaseVisitorImpl extends predicate_proof_grammarBaseVisitor<
     @Override public Node visitAlreadyProofed(AlreadyProofedContext ctx) {
         int linenumber = Integer.parseInt(ctx.lineNumber().getText());
         return new AlreadyProofedNode(linenumber);
+    }
+
+    @Override public Node visitEqualsIntroduction(EqualsIntroductionContext ctx) {
+        return new EqualsIntroNode();
+    }
+
+    @Override public Node visitEqualsElimination(EqualsEliminationContext ctx) {
+        return new EqualsEliNode(Integer.parseInt(ctx.singleScope(0).getText()), Integer.parseInt(ctx.singleScope(1).getText()));
     }
 }

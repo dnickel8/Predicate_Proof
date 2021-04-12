@@ -424,6 +424,30 @@ public class predicate_proof_grammarBaseListener implements predicate_proof_gram
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable(predicate_proof_grammarParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}

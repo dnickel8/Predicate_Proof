@@ -1,10 +1,7 @@
 Fragen:
 - Muss nur der oberste Knoten überprüft werden oder sollen auch tiefere gesucht werden --> sollte
 - Range, nicht nur Block für die REgeln
-- Seite 21 "copy linenumber"
-- p -> q <-> \neg p \vee q  --> already proofed
-- already proofed --> als Erweiterung
-- = introduction und elimination --> reinnehmen
+- =introduction und elimination --> testen
 - in der Box deklarierte Variable darf die Box nicht verlassen.
 
 - Seite116_2 darf nicht funktionieren

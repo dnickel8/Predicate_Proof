@@ -215,6 +215,18 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#equalsIntroduction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#equalsElimination}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

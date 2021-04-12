@@ -348,6 +348,26 @@ public interface predicate_proof_grammarListener extends ParseTreeListener {
 	 */
 	void exitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#equalsIntroduction}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link predicate_proof_grammarParser#equalsIntroduction}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#equalsElimination}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link predicate_proof_grammarParser#equalsElimination}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree
 	 */

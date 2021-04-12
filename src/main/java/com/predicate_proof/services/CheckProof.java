@@ -87,7 +87,11 @@ public class CheckProof {
         } else if (ruleNode instanceof CopyNode) {
             return copyNodeMethod(node, (CopyNode) ruleNode);
         } else if (ruleNode instanceof AlreadyProofedNode) {
-            return alreadyProofedNode(node, (AlreadyProofedNode) ruleNode);
+            return alreadyProofedMethod(node, (AlreadyProofedNode) ruleNode);
+        } else if (ruleNode instanceof EqualsEliNode) {
+            return equalsEliMethod(node, (EqualsEliNode) ruleNode);
+        } else if (ruleNode instanceof EqualsIntroNode) {
+            return equalsIntroMethod(node, (EqualsIntroNode) ruleNode);
         } else if (ruleNode == null) {
             return true;
         } else {
@@ -345,13 +349,31 @@ public class CheckProof {
         return rule.check(beforeLine.getFormula(), node.getFormula());
     }
 
-    private boolean alreadyProofedNode(LineNode node, AlreadyProofedNode ruleNode) {
+    private boolean alreadyProofedMethod(LineNode node, AlreadyProofedNode ruleNode) {
         LineNode beforeLine;
         if ((beforeLine = searchLineNode(ruleNode.getSingleScope())) == null) {
             return false;
         }
         AlreadyProofedRule rule = new AlreadyProofedRule();
         return rule.check(beforeLine.getFormula(), node.getFormula());
+    }
+
+    private boolean equalsEliMethod(LineNode node, EqualsEliNode ruleNode) {
+        LineNode beforeLine1;
+        if ((beforeLine1 = searchLineNode(ruleNode.getSingleScope1())) == null) {
+            return false;
+        }
+        LineNode beforeLine2;
+        if ((beforeLine2 = searchLineNode(ruleNode.getSingleScope2())) == null) {
+            return false;
+        }
+        EqualsEliRule rule = new EqualsEliRule();
+        return rule.check(beforeLine1.getFormula(), beforeLine2.getFormula(), node.getFormula());
+    }
+
+    private boolean equalsIntroMethod(LineNode node, EqualsIntroNode ruleNode) {
+        EqualsIntroRule rule = new EqualsIntroRule();
+        return rule.check(node.getFormula());
     }
 
     /********************

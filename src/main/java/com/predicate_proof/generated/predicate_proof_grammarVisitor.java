@@ -1,5 +1,6 @@
 // Generated from C:/Users/admin/Documents/Studium/Master/Forschungsprojekt/predicate_proof/src/main/java/com/predicate_proof/grammar\predicate_proof_grammar.g4 by ANTLR 4.9.1
 package com.predicate_proof.generated;
+import com.predicate_proof.generated.predicate_proof_grammarParser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -35,19 +36,19 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLine(predicate_proof_grammarParser.LineContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#logicFormula}.
+	 * Visit a parse tree produced by .
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitLogicFormula(predicate_proof_grammarParser.LogicFormulaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#implicationExpression}.
+	 * Visit a parse tree produced by .
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitImplicationExpression(predicate_proof_grammarParser.ImplicationExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#orAndExpression}.
+	 * Visit a parse tree produced by .
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
@@ -214,6 +215,18 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAlreadyProofed(predicate_proof_grammarParser.AlreadyProofedContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#equalsIntroduction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualsIntroduction(predicate_proof_grammarParser.EqualsIntroductionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#equalsElimination}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualsElimination(predicate_proof_grammarParser.EqualsEliminationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#variable}.
 	 * @param ctx the parse tree

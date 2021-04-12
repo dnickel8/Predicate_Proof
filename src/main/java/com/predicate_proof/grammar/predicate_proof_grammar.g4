@@ -92,6 +92,8 @@ description
     | existsquantorElimination
     | copyRule
     | alreadyProofed
+    | equalsIntroduction
+    | equalsElimination
 ;
 
 andIntroduction
@@ -205,6 +207,16 @@ alreadyProofed
     'already proofed' lineNumber
 ;
 
+equalsIntroduction
+:
+    EQ 'i'
+;
+
+equalsElimination
+:
+    EQ 'e' singleScope COMMA singleScope
+;
+
 variable
 :
     CHAR
@@ -302,6 +314,11 @@ TRANSFORMATION_ARROW
 EUQIVALENZ_ARROW
 :
     '\\leftrightarrow'
+;
+
+EQ
+:
+	'='
 ;
 
 LPAREN
