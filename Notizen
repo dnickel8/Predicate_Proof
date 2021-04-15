@@ -3,13 +3,11 @@ Fragen:
 - Range, nicht nur Block für die REgeln
 - =introduction und elimination --> testen
 - in der Box deklarierte Variable darf die Box nicht verlassen.
-
 - Seite116_2 darf nicht funktionieren
 
 
 Weiteres Vorgehen?
 - Fehlerhafte testen
-- junit Tests
 - Kommentare
 
 Vortrag

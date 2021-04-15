@@ -249,7 +249,7 @@ FORMULAEND
 
 VARIABLEEND
 :
-    '\\mid'
+    '\\parallel'
 ;
 
 BLOCKBEGIN

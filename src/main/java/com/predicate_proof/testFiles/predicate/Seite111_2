@@ -1,6 +1,1 @@
-\block_begin
-1 P(t) \formula_end premise \eol
-2 \forall x (P(x) -> \neg Q(x)) \formula_end premise \eol
-3 P(t) -> \neg Q(t) \formula_end \forall x e 2 \eol
-4 \neg Q(t) \formula_end -> e 3,1 \eol
-\block_end
+\\ll 1 P(t) \\mid premise \\\\ 2 \\forall x (P(x) -> \\neg Q(x)) \\mid premise \\\\ 3 P(t) -> \\neg Q(t) \\mid \\forall x e 2 \\\\ 4 \\neg Q(t) \\mid -> e 3,1 \\\\ \\gg

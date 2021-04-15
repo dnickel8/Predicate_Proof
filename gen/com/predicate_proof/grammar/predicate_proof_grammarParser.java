@@ -56,8 +56,8 @@ public class predicate_proof_grammarParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'i'", "'e1'", "'e2'", "'i1'", "'i2'", "'e'", "'MT'", "'PBC'", 
-			"'LEM'", "'copy'", "'already proofed'", "'-'", null, null, "'\\ll'", 
-			"'\\gg'", null, null, "'\\bot'", "'\\neg'", "'\\exists'", "'\\forall'", 
+			"'LEM'", "'copy'", "'already proofed'", "'-'", "'\\mid'", "'\\parallel'", 
+			"'\\ll'", "'\\gg'", null, null, "'\\bot'", "'\\neg'", "'\\exists'", "'\\forall'", 
 			"'\\wedge'", "'\\vee'", null, "'\\leftrightarrow'", "'='", null, null, 
 			"','"
 		};

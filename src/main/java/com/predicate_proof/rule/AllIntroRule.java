@@ -43,6 +43,8 @@ public class AllIntroRule extends Rule {
         }
         String afterVariable = afterNode.getVariable();
 
-        return replacingVariableEquals(beforeVariable, afterVariable, ((LineNode) beforeBlock.getChild(beforeBlock.getChildCount()-1)).getFormula(), afterNode.getExpression());
+        return replacingVariableEquals(beforeVariable,
+                afterVariable,
+                ((LineNode) beforeBlock.getChild(beforeBlock.getChildCount()-1)).getFormula(), afterNode.getExpression());
     }
 }

@@ -1,11 +1,2 @@
-\block_begin
-1 p -> q \formula_end premise \eol
-\block_begin
-2 p \wedge r \formula_end ass \eol
-3 p \formula_end \wedge e1 2 \eol
-4 r \formula_end \wedge e2 2 \eol
-5 q \formula_end -> e 1,3 \eol
-6 q \wedge r \formula_end \wedge i 5,4 \eol
-\block_end
-7 p \wedge r -> q \wedge r \formula_end -> i 2-6 \eol
-\block_end
+\\ll 1 p -> q \\mid premise \\\\ \\ll 2 p \\wedge r \\mid ass \\\\ 3 p \\mid \\wedge e1 2 \\\\ 4 r \\mid \\wedge e2 2 \\\\ 5 q \\mid -> e 1,3 \\\\
+6 q \\wedge r \\mid \\wedge i 5,4 \\\\ \\gg 7 p \\wedge r -> q \\wedge r \\mid -> i 2-6 \\\\ \\gg

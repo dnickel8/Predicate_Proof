@@ -1,13 +1,2 @@
-\block_begin
-1 p \wedge \neg q -> r \formula_end premise \eol
-2 \neg r \formula_end premise \eol
-3 p \formula_end premise \eol
-\block_begin
-4 \neg q \formula_end ass \eol
-5 p \wedge \neg q \formula_end \wedge i 3,4 \eol
-6 r \formula_end -> e 1,5 \eol
-7 \bot \formula_end \neg e 6,2 \eol
-\block_end
-8 \neg \neg q \formula_end \neg i 4-7 \eol
-9 q  \formula_end \neg \neg e 8 \eol
-\block_end
+\\ll 1 p \\wedge \\neg q -> r \\mid premise \\\\ 2 \\neg r \\mid premise \\\\ 3 p \\mid premise \\\\ \\ll 4 \\neg q \\mid ass \\\\ 5 p \\wedge \\neg q \\mid \\wedge i 3,4 \\\\
+6 r \\mid -> e 1,5 \\\\ 7 \\bot \\mid \\neg e 6,2 \\\\ \\gg 8 \\neg \\neg q \\mid \\neg i 4-7 \\\\ 9 q  \\mid \\neg \\neg e 8 \\\\ \\gg

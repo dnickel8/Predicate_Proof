@@ -1,6 +1,5 @@
 // Generated from C:/Users/admin/Documents/Studium/Master/Forschungsprojekt/predicate_proof/src/main/java/com/predicate_proof/grammar\predicate_proof_grammar.g4 by ANTLR 4.9.1
 package com.predicate_proof.generated;
-import com.predicate_proof.generated.predicate_proof_grammarParser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -36,19 +35,19 @@ public interface predicate_proof_grammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLine(predicate_proof_grammarParser.LineContext ctx);
 	/**
-	 * Visit a parse tree produced by .
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#logicFormula}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitLogicFormula(predicate_proof_grammarParser.LogicFormulaContext ctx);
 	/**
-	 * Visit a parse tree produced by .
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#implicationExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitImplicationExpression(predicate_proof_grammarParser.ImplicationExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by .
+	 * Visit a parse tree produced by {@link predicate_proof_grammarParser#orAndExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */

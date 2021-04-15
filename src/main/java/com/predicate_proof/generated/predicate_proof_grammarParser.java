@@ -1,10 +1,14 @@
 // Generated from C:/Users/admin/Documents/Studium/Master/Forschungsprojekt/predicate_proof/src/main/java/com/predicate_proof/grammar\predicate_proof_grammar.g4 by ANTLR 4.9.1
 package com.predicate_proof.generated;
+import com.predicate_proof.generated.predicate_proof_grammarVisitor;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class predicate_proof_grammarParser extends Parser {
@@ -53,8 +57,8 @@ public class predicate_proof_grammarParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'i'", "'e1'", "'e2'", "'i1'", "'i2'", "'e'", "'MT'", "'PBC'", 
-			"'LEM'", "'copy'", "'already proofed'", "'-'", null, null, "'\\ll'", 
-			"'\\gg'", null, null, "'\\bot'", "'\\neg'", "'\\exists'", "'\\forall'", 
+			"'LEM'", "'copy'", "'already proofed'", "'-'", "'\\mid'", "'\\parallel'", 
+			"'\\ll'", "'\\gg'", null, null, "'\\bot'", "'\\neg'", "'\\exists'", "'\\forall'", 
 			"'\\wedge'", "'\\vee'", null, "'\\leftrightarrow'", "'='", null, null, 
 			"','"
 		};
@@ -130,7 +134,7 @@ public class predicate_proof_grammarParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_predicateProof; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof predicate_proof_grammarListener) ((predicate_proof_grammarListener)listener).enterPredicateProof(this);
+			if ( listener instanceof predicate_proof_grammarListener ) ((predicate_proof_grammarListener)listener).enterPredicateProof(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
@@ -138,7 +142,7 @@ public class predicate_proof_grammarParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof predicate_proof_grammarVisitor ) return ((predicate_proof_grammarVisitor<? extends T>)visitor).visitPredicateProof(this);
+			if ( visitor instanceof predicate_proof_grammarVisitor) return ((predicate_proof_grammarVisitor<? extends T>)visitor).visitPredicateProof(this);
 			else return visitor.visitChildren(this);
 		}
 	}

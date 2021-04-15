@@ -21,11 +21,12 @@ public class PBCRule extends Rule {
 
     public boolean check(BlockNode beforeBlock,
                          Node afterNode) {
-        if (!(((LineNode) beforeBlock.getChild(beforeBlock.getChildCount()-1)).getFormula() instanceof BottomNode)) {
-            return false;
-        } else {
+        if (beforeBlock.getChildCount() > 0
+                && ((LineNode) beforeBlock.getChild(beforeBlock.getChildCount() - 1)).getFormula() instanceof BottomNode) {
             return negativeEquals(((LineNode) beforeBlock.getChild(0)).getFormula(),
                     afterNode);
+        } else {
+            return false;
         }
     }
 }

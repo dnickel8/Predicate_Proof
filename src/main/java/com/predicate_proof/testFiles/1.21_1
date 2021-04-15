@@ -1,11 +1,2 @@
-\block_begin
-1 p -> q \formula_end premise \eol
-2 p -> \neg q \formula_end premise \eol
-\block_begin
-3 p \formula_end ass \eol
-4 q \formula_end -> e 1,3 \eol
-5 \neg q \formula_end -> e 2,3 \eol
-6 \bot \formula_end \neg e 4,5 \eol
-\block_end
-7 \neg p \formula_end \neg i 3-6 \eol
-\block_end
+\\ll 1 p -> q \\mid premise \\\\ 2 p -> \\neg q \\mid premise \\\\ \\ll 3 p \\mid ass \\\\ 4 q \\mid -> e 1,3 \\\\ 5 \\neg q \\mid -> e 2,3 \\\\
+6 \\bot \\mid \\neg e 4,5 \\\\ \\gg 7 \\neg p \\mid \\neg i 3-6 \\\\ \\gg

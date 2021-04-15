@@ -23,6 +23,9 @@ public class ImpliesIntroRule extends Rule {
 
     public boolean check(BlockNode beforeBlock,
                          FormulaNode afterFormula) {
+        if (beforeBlock.getChildCount() == 0) {
+            return false;
+        }
         Node beforeFirstFormula = ((LineNode) beforeBlock.getChild(0)).getFormula();
         Node beforeLastFormula = ((LineNode) beforeBlock.getChild(beforeBlock.getChildCount()-1)).getFormula();
 

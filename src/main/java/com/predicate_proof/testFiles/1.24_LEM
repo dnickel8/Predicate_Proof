@@ -1,14 +1,2 @@
-\block_begin
-1 p -> q \formula_end premise \eol
-2 \neg p \vee p \formula_end LEM \eol
-\block_begin
-3 \neg p \formula_end ass \eol
-4 \neg p \vee q \formula_end \vee i1 3 \eol
-\block_end
-\block_begin
-5 p \formula_end ass \eol
-6 q \formula_end -> e 1,5 \eol
-7 \neg p \vee q \formula_end \vee i2 6 \eol
-\block_end
-8 \neg p \vee q \formula_end \vee e 2,3-4,5-7 \eol
-\block_end
+\\ll 1 p -> q \\mid premise \\\\ 2 \\neg p \\vee p \\mid LEM \\\\ \\ll 3 \\neg p \\mid ass \\\\ 4 \\neg p \\vee q \\mid \\vee i1 3 \\\\ \\gg \\ll 5 p \\mid ass \\\\
+6 q \\mid -> e 1,5 \\\\ 7 \\neg p \\vee q \\mid \\vee i2 6 \\\\ \\gg 8 \\neg p \\vee q \\mid \\vee e 2,3-4,5-7 \\\\ \\gg

@@ -43,7 +43,7 @@ public class ExistEliRule extends Rule {
 
         if (replacingVariableEquals(beforeVariable, afterVariable, beforeFormula.getExpression(),   //the first line in the block is equals to the line from which the exists-operator is eliminated
                 ((LineNode) beforeBlock.getChild(0)).getFormula())                                  //but the declared variable replaces the variable is boundes from the exists-wuantor
-        ){//&& variableNotInFormula(beforeBlock.getDeclaredVariable(), afterFormula)) {
+            && variableNotInFormula(beforeBlock.getDeclaredVariable(), afterFormula)) {
             return equals(afterFormula, ((LineNode) beforeBlock.getChild(beforeBlock.getChildCount()-1)).getFormula()); //the last line of the block is like the new/after line
         } else {
             return false;

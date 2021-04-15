@@ -1,8 +1,2 @@
-\block_begin
-1 ( p \wedge q ) \wedge r \formula_end premise \eol
-2 s \wedge t \formula_end premise \eol
-3 p \wedge q \formula_end \wedge e1 1 \eol
-4 q \formula_end \wedge e2 3 \eol
-5 s \formula_end \wedge e1 2 \eol
-6 q \wedge s \formula_end \wedge i 4,5 \eol
-\block_end
+\\ll 1 ( p \\wedge q ) \\wedge r \\mid premise \\\\ 2 s \\wedge t \\mid premise \\\\ 3 p \\wedge q \\mid \\wedge e1 1 \\\\ 4 q \\mid \\wedge e2 3 \\\\
+5 s \\mid \\wedge e1 2 \\\\ 6 q \\wedge s \\mid \\wedge i 4,5 \\\\ \\gg

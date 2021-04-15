@@ -1,6 +1,1 @@
-\block_begin
-1 p -> \neg q \formula_end premise \eol
-2 q \formula_end premise \eol
-3 \neg \neg q \formula_end \neg \neg i 2 \eol
-4 \neg p \formula_end MT 1,3 \eol
-\block_end
+\\ll 1 p -> \\neg q \\mid premise \\\\ 2 q \\mid premise \\\\ 3 \\neg \\neg q \\mid \\neg \\neg i 2 \\\\ 4 \\neg p \\mid MT 1,3 \\\\ \\gg
